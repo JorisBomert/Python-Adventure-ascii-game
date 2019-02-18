@@ -1,0 +1,191 @@
+{ "state": 0,
+  "game" :
+    [
+      {
+        "description" : "You are home. Seeking for an adventure.",
+        "clues":
+          ["Maybe there is something in the chest?", "Something from the chest you can pick up?",
+          "What about the key?", "The door opened, would your dare entering the next area? All you have to do is go forward..."],
+        "objects":
+            {"chest": {
+                  "name": "chest",
+                  "description": ["An old wooden chest, 'knock' 'knock', It does not sound empty...",
+                                  "Just a pile of broken wood now..."],
+                  "state": 0,
+                  "actions": ["kick"],
+                  "whenDone": ["flashlight"]
+              }, "flashlight": {
+                  "name": "flashlight",
+                  "description": ["A flashlight could come in handy, but where could it be?",
+                                  "A flashlight fell out of the chest, and is laying somewhere in between the pile of broken wood",
+                                  "You just picked up the flashlight, can't you remember? It's in your inventory now."],
+                  "state": 1,
+                  "actions": ["pick"],
+                  "whenDone": ["key"]
+            }, "key": {
+                  "name": "key",
+                  "description": ["A key is hanging on a key holder next to the door",
+                                  "The key has just opened the door"],
+                  "actions": ["move"],
+                  "state": 2,
+                  "whenDone": []
+              }},
+        "actions": [
+          {"kick": "chest"},
+          {"pick": "flashlight"},
+          {"move": "key"}
+            ],
+        "toSee" : "In the room you see a chest, a key and a door",
+        "state" : 0,
+        "done" : 2
+          },
+            {
+              "description": "You walk outside, entering a forrest with a cave",
+              "clues":
+                ["Could there be something in the barrel?",
+                  "Maybe you can do something with the honey...",
+                 "The bear seems to be distracted by the honey... This is your chance to sneak forward into the cave"],
+              "objects":
+                  {"barrel": {
+                      "name": "barrel",
+                      "description": ["A barrel in the forrest", "The barrel got destroyed"],
+                      "state": 0,
+                      "actions": ["kick"],
+                      "whenDone": ["honey"]
+                  }, "honey": {
+                      "name": "honey",
+                      "description": ["A jar with honey fell out of the barrel",
+                      "The bear sees the honey and starts eating away"],
+                      "state": 1,
+                      "actions": ["move"],
+                      "whenDone": []
+                  }},
+            "actions": [
+                {"kick": "barrel"},
+                {"move": "honey"}
+                ],
+                  "toSee" : "In the forrest somewhere in between the trees, there is a barrel, and a cave",
+                  "state" : 0,
+                  "done" : 1
+                },
+                {
+                  "description": ["You entered the spooky dark cave, but it's pitch black so you don't see a thing!",
+                  "In the dark cave you see a pickaxe laying on the ground, and a small opening in between the rocks...",
+                  "The opening seems to have gotten big enough to go through..."],
+                  "clues":
+                    ["It's pitch black! Could there be something in your inventory to use?",
+                      "What about the pickaxe?",
+                     "The opening in the cave seems to be big enough to squeeze through"],
+                  "objects":
+                      {"pickaxe": {
+                          "name": "pickaxe",
+                          "description": ["A pickaxe laying on the ground", "Hacking away with the pickaxe..."],
+                          "state": 0,
+                          "actions": ["use"],
+                          "whenDone": ["gap"]
+                      }, "gap": {
+                          "name": "gap",
+                          "description": ["A small opening in between the rocks",
+                          "The gap has become wider now"],
+                          "state": 1,
+                          "actions": ["forward"],
+                          "whenDone": []
+                      }},
+                "actions": [
+                    {"use": "pickaxe"},
+                    {"forward": "gap"}
+                    ],
+                      "toSee" : ["It's too dark to see anything!",
+                                "There is a pickaxe laying on the ground and a small opening in beetween the rocks"],
+                      "state" : 0,
+                      "done" : 1
+                    },
+                    {
+                      "description": ["Cave with a magical admosphere to it, there is a waterfall and a jar standing there",
+                      "A magical cave, can you believe your eyes? There's actually a fairy in the cave!"],
+                      "clues":
+                        ["What about the jar?",
+                          "Didn't the fairy say something about the rock?",
+                         "Maybe you could pick up the shoes?",
+                         "Maybe you should try and kick the jar again now that you have to Boots of Doom?",
+                          "Go forward when ready and see what the fairy has in mind"],
+                      "objects":
+                          {"jar": {
+                              "name": "jar",
+                              "description": ["A jar standing on the ground", "Indestructible jar it seems? With a fairy in it!"],
+                              "state": 0,
+                              "actions": ["kick"],
+                              "whenDone": ["rock"]
+                          }, "rock": {
+                              "name": "rock",
+                              "description": ["A rock in the cave",
+                              "The rock fell on it's side and got distroyed"],
+                              "state": 1,
+                              "actions": ["move"],
+                              "whenDone": ["boots"]
+                          }, "boots": {
+                              "name": "boots",
+                              "description": ["boots with magical powers"],
+                              "state": 1,
+                              "actions": ["take"],
+                              "whenDone": ["jar"]
+                            }, "fairy": {
+                                "name": "fairy",
+                                "description": ["A magical fairy in the room, can you believe your eyes?"],
+                                "state": 1,
+                                "actions": [],
+                                "whenDone": []
+                              },
+                    "actions": [
+                        {"kick": "jar"},
+                        {"move": "rock"},
+                        {"take": "boots"},
+                        {"forward": "fairy"}
+                        ],
+                          "toSee" : ["You see a cave with a magical atmosphere, a waterfall, a rock and a jar",
+                                    "You see a cave with a magical atmospherem a waterfall, a broken rock and a fairy in a jar"],
+                          "state" : 0,
+                          "done" : 1
+                        }},
+                        {
+                          "description": ["You are a church with a beautiful princess next to you and a priest standing before you."],
+                          "clues":
+                            ["Didn't the fairy just drop something in your pockets?",
+                              "Maybe it's time to kiss now? Don't make the princess wait too long..."
+                             ],
+                          "objects":
+                              {"fairy": {
+                                  "name": "fairy",
+                                  "description": ["The fairy is still with you, hovering above your shoulders"],
+                                  "state": 0,
+                                  "actions": [],
+                                  "whenDone": []
+                              }, "ring": {
+                                  "name": "ring",
+                                  "description": ["The wedding ring the fairy gave to you"],
+                                  "state": 1,
+                                  "actions": ["use"],
+                                  "whenDone": ["princess"]
+                              }, "princess": {
+                                  "name": "princess",
+                                  "description": ["A beautiful princess next to you ready to marry you"],
+                                  "state": 1,
+                                  "actions": ["kiss"],
+                                  "whenDone": []
+                                }, "priest": {
+                                    "name": "priest",
+                                    "description": ["A priest standing before you, performing the ceremony"],
+                                    "state": 1,
+                                    "actions": [],
+                                    "whenDone": []
+                                  },
+                        "actions": [
+                            {"use": "ring"},
+                            {"kiss": "princess"}
+                            ],
+                              "toSee" : ["You see a beautiful princess next to you, a priest before you, the fairy above you and lots of people around watching"],
+                              "state" : 0,
+                              "done" : 1
+                            }}
+      ]
+    }
